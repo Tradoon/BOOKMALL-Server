@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author: 黄龙
- * @date: 2020/7/29 12:39
+ * @author: tradoon
+ * @date: 2022
  * @description: 当访问接口没有权限时，自定义的返回结果
  */
 @Component

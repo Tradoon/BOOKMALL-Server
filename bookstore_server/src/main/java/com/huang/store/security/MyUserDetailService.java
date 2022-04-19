@@ -43,8 +43,10 @@ public class MyUserDetailService implements UserDetailsService {
             securityUser.setPassword("wrong");
         } else {
             logger.info("登录用户名:" + username + "    数据库密码:" + user.getPassword());
+
             System.out.println("========"+user.toString()+"=============");
 //            String password = passwordEncoder.encode(user.getPassword());
+
             securityUser.setEnabled(user.isEnable());
             securityUser.setUsername(username);
             securityUser.setPassword(user.getPassword());

@@ -103,7 +103,7 @@ public class UserController {
      */
     @ResponseBody
     @GetMapping("/delUserAddress")
-    public Map<String,Object> delUserAddress(@RequestParam("id")int id){
+    public Map<String,Object> delUserAddress(@RequestParam("id")Long id){
         int result = addressService.deleteAddress(id);
         if(result>0){
             return ResultUtil.resultCode(200,"删除地址成功");
@@ -154,7 +154,7 @@ public class UserController {
      */
     @ResponseBody
     @GetMapping("/modifyUserStatus")
-    public Map<String,Object> modifyUserStatus(@RequestParam(value = "id")int id,
+    public Map<String,Object> modifyUserStatus(@RequestParam(value = "id")Long id,
                                                @RequestParam(value = "status")boolean status){
         User user = new User();
         user.setId(id);

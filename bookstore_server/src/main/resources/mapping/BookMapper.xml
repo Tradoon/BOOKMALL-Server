@@ -4,8 +4,8 @@
 
     <!--这些是对book表的查询-->
     <insert id="addBook" parameterType="com.huang.store.entity.book.Book">
-        insert into book(author,rank,bookName,isbn,publish,birthday,marketPrice,price,stock,description,put,newProduct,recommend)
-        values (#{author},#{rank},#{bookName},#{isbn},#{publish},#{birthday},#{marketPrice},#{price},#{stock},#{description},#{put},#{newProduct},#{recommend})
+        insert into book( `id`,`author`, `rank`, `bookName`, `isbn`, `publish`, `birthday`, `marketPrice`, `price`, `stock`, `description`, `put`, `newProduct`, `recommend`)
+        values (#{id},#{author},#{rank},#{bookName},#{isbn},#{publish},#{birthday},#{marketPrice},#{price},#{stock},#{description},#{put},#{newProduct},#{recommend})
     </insert>
 
     <delete id="deleteBook">
@@ -64,8 +64,8 @@
         select * from book
     </select>
 
-    <select id="getBookId" resultType="int">
-        select id from book where isbn=#{isbn};
+    <select id="getBookId" resultType="Long">
+        select id from book where isbn=#{isbn} limit 1;
     </select>
 
     <select id="getBookIsbn" resultType="String">
@@ -124,7 +124,7 @@
 
     <!--    下面查询语句是对bookimg表的操作-->
     <insert id="addBookImg" parameterType="com.huang.store.entity.book.BookImg">
-        insert into bookimg (isbn,imgSrc,cover) values (#{isbn},#{imgSrc},#{cover})
+        insert into bookimg (`id`,`isbn`,`imgSrc`,`cover`) values (#{id},#{isbn},#{imgSrc},#{cover})
     </insert>
 
     <delete id="deleteBookImgOfOne">
@@ -153,7 +153,7 @@
 
     <!--这些是对推荐图书表的操作(recommend)-->
     <insert id="addToRecommend" parameterType="com.huang.store.entity.book.Recommend">
-        insert into recommend (bookId,rank,addTime) values (#{bookId},#{rank},#{addTime})
+        insert into recommend (`id`,`bookId`,`rank`,`addTime`) values (#{id},#{bookId},#{rank},#{addTime})
     </insert>
 
     <delete id="deleteFromRecommend">
@@ -184,7 +184,7 @@
 
     <!--这些是对新品推荐表的操作(newproduct)    -->
     <insert id="addToNewProduct" parameterType="com.huang.store.entity.book.Recommend">
-        insert into newproduct (bookId,rank,addTime) values (#{bookId},#{rank},#{addTime})
+        insert into newproduct (`id`,`bookId`,`rank`,`addTime`) values (#{id},#{bookId},#{rank},#{addTime})
     </insert>
 
     <delete id="deleteFromNewProduct">

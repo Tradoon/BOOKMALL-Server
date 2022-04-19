@@ -159,12 +159,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public int delOrder(int id) {
+    public int delOrder(Long id) {
         return orderMapper.delOrder(id);
     }
 
     @Override
-    public int userDelOrder(int id) {
+    public int userDelOrder(Long id) {
         Order order = new Order();
         order.setId(id);
         order.setBeUserDelete(true);
@@ -177,7 +177,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public int modifyOrderStatus(int id, String orderStatus) {
+    public int modifyOrderStatus(Long id, String orderStatus) {
         Order order = new Order();
         order.setId(id);
         order.setOrderStatus(orderStatus);
@@ -186,7 +186,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     @Override
-    public int deliverBook(int id, int logisticsCompany, String logisticsNum) {
+    public int deliverBook(Long id, int logisticsCompany, String logisticsNum) {
         int result = orderMapper.modifyLogistics(id, logisticsCompany, logisticsNum);
         Order order = new Order();
         order.setId(id);
@@ -196,7 +196,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDto findOrderDto(int id) {
+    public OrderDto findOrderDto(Long id) {
         OrderDto orderDto = new OrderDto();
         orderDto = orderMapper.findOrderDto(id);
         List<OrderDetailDto> orderDetailDtoList  = orderMapper.findOrderDetailDtoList(orderDto.getOrderId());

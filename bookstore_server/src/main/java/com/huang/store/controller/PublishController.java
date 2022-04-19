@@ -85,7 +85,7 @@ public class PublishController {
      * @return
      */
     @GetMapping("/getEditPublish")
-    Map<String,Object> getEditPublish(@RequestParam int id){
+    Map<String,Object> getEditPublish(@RequestParam Long id){
         Map<String,Object> map = new HashMap<>();
         Publish publish = publishService.getPublishById(id);
         map.put("publish",publish);
@@ -116,7 +116,7 @@ public class PublishController {
      * @return
      */
     @GetMapping("/modifyShowPublish")
-    Map<String,Object> modifyIsShow(@RequestParam int id){
+    Map<String,Object> modifyIsShow(@RequestParam Long id){
         if(publishService.modifyIsShow(id)>0){
             System.out.println("修改成功");
             return ResultUtil.resultCode(200,"修改成功！");
@@ -130,7 +130,7 @@ public class PublishController {
      * @return
      */
     @GetMapping("/delPublish")
-    Map<String,Object> delPublish(@RequestParam int id){
+    Map<String,Object> delPublish(@RequestParam Long id){
         if(publishService.deletePublish(id)>0){
             System.out.println("删除成功");
             return ResultUtil.resultCode(200,"删除成功");

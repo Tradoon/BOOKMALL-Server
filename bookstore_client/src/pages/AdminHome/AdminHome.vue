@@ -60,7 +60,7 @@
                 <el-dropdown-item><a href="#/">退出</a></el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-            <span>黄龙</span>
+            <span>tradoon</span>
           </el-header>
 
           <el-main>

@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.UUID;
 
 /**
- * @author: 黄龙
- * @date: 2020/8/10 20:23
- * @description: 上传文件工具类
+ * @author: tradoon
+ * @date: 2022
+ * @description:上传文件工具类
  */
 public class UploadUtil {
     private static final Logger log = LoggerFactory.getLogger(UploadUtil.class);

@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.sql.Timestamp;
 
 /**
- * @author: 黄龙
- * @date: 2020/7/30 13:50
+ * @author: tradoon
+ * @date: 2022
  * @description: 订单统计类,用于图表显示的类
  */
 public class OrderStatistic {

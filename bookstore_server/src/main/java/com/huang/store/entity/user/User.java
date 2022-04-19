@@ -1,15 +1,21 @@
 package com.huang.store.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 /**
- * @author: 黄龙
- * @date: 2020/7/30 17:56
+ * @author: tradoon
+ * @date: 2022
  * @description: 用户类
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
-    private int id;//用户编号
+    private Long id;//用户编号
     private String account;//用邮箱注册
     private String password;
     private String name;
@@ -21,85 +27,6 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Timestamp registerTime;//注册时间
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    public boolean isManage() {
-        return manage;
-    }
-
-    public void setManage(boolean manage) {
-        this.manage = manage;
-    }
-
-    public boolean isEnable() {
-        return enable;
-    }
-
-    public void setEnable(boolean enable) {
-        this.enable = enable;
-    }
-
-    public Timestamp getRegisterTime() {
-        return registerTime;
-    }
-
-    public void setRegisterTime(Timestamp registerTime) {
-        this.registerTime = registerTime;
-    }
 
     @Override
     public String toString() {

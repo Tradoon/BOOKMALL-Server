@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author: 黄龙
- * @date: 2020/6/10 19:27
+ * @author: tradoon
+ * @date: 2022
  * @description: 返回结果统一规范类
  */
 public class ResultUtil {

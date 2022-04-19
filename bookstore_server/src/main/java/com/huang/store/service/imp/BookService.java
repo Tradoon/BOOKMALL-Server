@@ -10,21 +10,21 @@ import java.util.List;
 public interface BookService {
     int addBook(Book book);
     int modifyBook(Book book);
-    int modifyBookPut(int id,boolean put);//修改图书是否为上下架
-    int modifyBookRec(int id,boolean recommend);//修改图书是否为推荐图书
-    int modifyBookNewPro(int id,boolean newProduct);//修改图书是否为新品
-    int modifyBookStock(int id,int stockNum);//减库存stockNum
-    int deleteBook(int id);
+    int modifyBookPut(Long id,boolean put);//修改图书是否为上下架
+    int modifyBookRec(Long id,boolean recommend);//修改图书是否为推荐图书
+    int modifyBookNewPro(Long id,boolean newProduct);//修改图书是否为新品
+    int modifyBookStock(Long id,int stockNum);//减库存stockNum
+    int deleteBook(Long id);
     List<Book> getBooks();
     List<Book> getBooksByPage(int page,int pageSize);
     List<Book> getNewPutBookList(int page,int pageSize);
 
-    List<OrderBookDto> getBatchBookList(int[] ids);//根据ids数组，得到对应的图书集合
-    List<OrderBookDto> getOneBookList(int[] ids);//根据ids数组，得到对应的图书集合
+    List<OrderBookDto> getBatchBookList(Long[] ids);//根据ids数组，得到对应的图书集合
+    List<OrderBookDto> getOneBookList(Long[] ids);//根据ids数组，得到对应的图书集合
 
-    int getBookId(String isbn);
-    String getBookIsbn(int id);
-    Book getBook(int id);//获取图书的所有
+    Long getBookId(String isbn);
+    String getBookIsbn(Long id);
+    Book getBook(Long id);//获取图书的所有
     Book getBookDetail(String ISBN);//获得图书用于后台页表展示的信息(除去图书详情页和部分图书相册)
     int getPublishBookNum(String publishName);//得到某一出版社的图书的数量
     int getBookCount();//得到图书的数量
@@ -40,31 +40,31 @@ public interface BookService {
 
 
     int addToRecommend(Recommend recommend);
-    int deleteFromRecommend(int bookId);
-    int modifyRecommendRank(int bookId,int rank);
-    int hasExistInRec(int bookId);
+    int deleteFromRecommend(Long bookId);
+    int modifyRecommendRank(Long bookId,int rank);
+    int hasExistInRec(Long bookId);
     List<Book> getRecommendsByPage(int page,int pageSize);
 
     int addToNewProduct(Recommend newProduct);
-    int deleteFromNewProduct(int bookId);
-    int modifyNewProductRank(int bookId,int rank);
-    int hasExistInNew(int bookId);
+    int deleteFromNewProduct(Long bookId);
+    int modifyNewProductRank(Long bookId,int rank);
+    int hasExistInNew(Long bookId);
     List<Book> getNewProductsByPage(int page,int pageSize);
 
 
     //添加图书到分类
-    int addBookToSort(int bookSortId ,int bookId);
-    int delBookFromSort(int booSortId,int bookId);
-    int modifyBookSort(int bookSortId,int bookId);
-    BookSort getBookSort(int bookId);//得到某本书的分类名
+    int addBookToSort(Long bookSortId ,Long bookId);
+    int delBookFromSort(Long booSortId,Long bookId);
+    int modifyBookSort(Long bookSortId,Long bookId);
+    BookSort getBookSort(Long bookId);//得到某本书的分类名
     List<Book> getBooksByFirst(String sortName,int page,int pageSize);//得到级别一的所有分类书籍
-    List<Book> getBookBySecond(int bookSortId,int page,int pageSize);//得到级别二的所有分类图书
+    List<Book> getBookBySecond(Long bookSortId,int page,int pageSize);//得到级别二的所有分类图书
     int getFirstBookCount(String sortName);//得到一级分类图书的数量
-    int getSecondBookCount(int bookSortId);//得到二级分类图书的数量
+    int getSecondBookCount(Long bookSortId);//得到二级分类图书的数量
 
     //批量处理图书
-    int batchDelBook(int[] idS);
-    int batchPutBook(int[] idS,boolean put);
-    int batchRecBook(int[] idS,boolean recommend);
-    int batchNewProBook(int[] idS,boolean newProduct);
+    int batchDelBook(Long[] idS);
+    int batchPutBook(Long[] idS,boolean put);
+    int batchRecBook(Long[] idS,boolean recommend);
+    int batchNewProBook(Long[] idS,boolean newProduct);
 }

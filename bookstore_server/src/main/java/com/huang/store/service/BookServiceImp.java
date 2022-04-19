@@ -5,6 +5,7 @@ import com.huang.store.entity.dto.OrderBookDto;
 import com.huang.store.mapper.BookMapper;
 import com.huang.store.mapper.SortMapper;
 import com.huang.store.service.imp.BookService;
+import com.huang.store.util.SnowflakeConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -27,6 +28,9 @@ public class BookServiceImp implements BookService {
     BookMapper bookMapper;
 
     @Autowired
+    SnowflakeConfig snowflakeConfig;
+
+    @Autowired
     SortMapper sortMapper;
 
     @Autowired
@@ -34,9 +38,10 @@ public class BookServiceImp implements BookService {
 
     @Override
     public int addBook(Book book) {
+        book.setId(snowflakeConfig.snowFlackId());
         int result = bookMapper.addBook(book);
         if(result>0){
-            int bookId = bookMapper.getBookId(book.getisbn());
+            Long bookId = bookMapper.getBookId(book.getIsbn());
             System.out.println("============bookId===============:"+bookId);
             book.setId(bookId);
             System.out.println("=======book：======="+book.toString()+"============");
@@ -61,7 +66,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int modifyBookPut(int id, boolean put) {
+    public int modifyBookPut(Long id, boolean put) {
         Book book1 = bookMapper.getBook(id);
         int result = bookMapper.modifyBookPut(id,put);
         if(result>0){
@@ -74,7 +79,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int modifyBookRec(int id, boolean recommend) {
+    public int modifyBookRec(Long id, boolean recommend) {
         Book book1 = bookMapper.getBook(id);
         int result = bookMapper.modifyBookRec(id, recommend);
         if(result>0){
@@ -87,7 +92,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int modifyBookNewPro(int id, boolean newProduct) {
+    public int modifyBookNewPro(Long id, boolean newProduct) {
         Book book1 = bookMapper.getBook(id);
         int result = bookMapper.modifyBookNewPro(id, newProduct);
         if(result>0){
@@ -100,7 +105,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int modifyBookStock(int id, int stockNum) {
+    public int modifyBookStock(Long id, int stockNum) {
         Book book1 = bookMapper.getBook(id);
         int result = bookMapper.modifyBookStock(id,stockNum);
         if(result>0){
@@ -114,7 +119,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int deleteBook(int id) {
+    public int deleteBook(Long id) {
         int result = bookMapper.deleteBook(id);
         if(result>0){
             if(redisTemplate.hasKey(book_prefix+id)){
@@ -148,12 +153,12 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public List<OrderBookDto> getBatchBookList(int[] ids) {
+    public List<OrderBookDto> getBatchBookList(Long[] ids) {
         return bookMapper.getBatchBookList(ids);
     }
 
     @Override
-    public List<OrderBookDto> getOneBookList(int[] ids) {
+    public List<OrderBookDto> getOneBookList(Long[] ids) {
         return bookMapper.getOneBookList(ids);
     }
 
@@ -164,17 +169,17 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int getBookId(String isbn) {
+    public Long getBookId(String isbn) {
         return bookMapper.getBookId(isbn);
     }
 
     @Override
-    public String getBookIsbn(int id) {
+    public String getBookIsbn(Long id) {
         return bookMapper.getBookIsbn(id);
     }
 
     @Override
-    public Book getBook(int id) {
+    public Book getBook(Long id) {
         ValueOperations<String, Book> operations = redisTemplate.opsForValue();
         if(redisTemplate.hasKey(book_prefix+id)){
             System.out.println("=========从缓存中读取单本图书的数据==========");
@@ -209,6 +214,7 @@ public class BookServiceImp implements BookService {
 
     @Override
     public int addBookImg(BookImg bookImg) {
+        bookImg.setId(snowflakeConfig.snowFlackId());
         int result = bookMapper.addBookImg(bookImg);
         return result;
     }
@@ -242,24 +248,26 @@ public class BookServiceImp implements BookService {
 
     @Override
     public int addToRecommend(Recommend recommend) {
+        recommend.setId(snowflakeConfig.snowFlackId());
+        recommend.setAddTime(new Timestamp(new Date().getTime()));
        int result = bookMapper.addToRecommend(recommend);
        return result;
     }
 
     @Override
-    public int deleteFromRecommend(int bookId) {
+    public int deleteFromRecommend(Long bookId) {
         int result = bookMapper.deleteFromRecommend(bookId);
         return result;
     }
 
     @Override
-    public int modifyRecommendRank(int bookId, int rank) {
+    public int modifyRecommendRank(Long bookId, int rank) {
         int result = bookMapper.modifyRecommendRank(bookId,rank);
         return result;
     }
 
     @Override
-    public int hasExistInRec(int bookId) {
+    public int hasExistInRec(Long bookId) {
         return bookMapper.hasExistInRec(bookId);
     }
 
@@ -278,20 +286,20 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int deleteFromNewProduct(int bookId) {
+    public int deleteFromNewProduct(Long bookId) {
         int result=bookMapper.deleteFromNewProduct(bookId);
         return result;
     }
 
     @Override
-    public int modifyNewProductRank(int bookId, int rank) {
+    public int modifyNewProductRank(Long bookId, int rank) {
         int result=bookMapper.modifyNewProductRank(bookId,rank);
         return result;
     }
 
 
     @Override
-    public int hasExistInNew(int bookId) {
+    public int hasExistInNew(Long bookId) {
         return bookMapper.hasExistInNew(bookId);
     }
 
@@ -304,25 +312,25 @@ public class BookServiceImp implements BookService {
 
     //有关图书分类的操作
     @Override
-    public int addBookToSort(int bookSortId, int bookId) {
+    public int addBookToSort(Long bookSortId, Long bookId) {
         int result =bookMapper.addBookToSort(bookSortId, bookId);
         return result;
     }
 
     @Override
-    public int delBookFromSort(int booSortId, int bookId) {
+    public int delBookFromSort(Long booSortId, Long bookId) {
         int result = bookMapper.delBookFromSort(booSortId, bookId);
         return result;
     }
 
     @Override
-    public int modifyBookSort(int bookSortId, int bookId) {
+    public int modifyBookSort(Long bookSortId, Long bookId) {
         int result = bookMapper.modifyBookSort(bookSortId, bookId);
         return result;
     }
 
     @Override
-    public BookSort getBookSort(int bookId) {
+    public BookSort getBookSort(Long bookId) {
         return bookMapper.getBookSort(bookId);
     }
 
@@ -331,29 +339,29 @@ public class BookServiceImp implements BookService {
     @Override
     public List<Book> getBooksByFirst(String sortName, int page, int pageSize) {
         int start = (page-1)*pageSize;
-        List<Integer> item = sortMapper.getAllFirSortId(sortName);
+        List<Long> item = sortMapper.getAllFirSortId(sortName);
         return bookMapper.getBooksByFirst(item,start,pageSize);
     }
 
     @Override
-    public List<Book> getBookBySecond(int bookSortId, int page, int pageSize) {
+    public List<Book> getBookBySecond(Long bookSortId, int page, int pageSize) {
         int start = (page-1)*pageSize;
         return bookMapper.getBookBySecond(bookSortId,start,pageSize);
     }
 
     @Override
     public int getFirstBookCount(String sortName) {
-        List<Integer> item = sortMapper.getAllFirSortId(sortName);
+        List<Long> item = sortMapper.getAllFirSortId(sortName);
         return bookMapper.getFirstBookCount(item);
     }
 
     @Override
-    public int getSecondBookCount(int bookSortId) {
+    public int getSecondBookCount(Long bookSortId) {
         return bookMapper.getSecondBookCount(bookSortId);
     }
 
     @Override
-    public int batchDelBook(int[] idS) {
+    public int batchDelBook(Long[] idS) {
         for(int i=0;i<idS.length;i++){
             if(bookMapper.deleteBook(idS[i])<1){
                 return 0;
@@ -363,7 +371,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int batchPutBook(int[] idS, boolean put) {
+    public int batchPutBook(Long[] idS, boolean put) {
         for(int i=0;i<idS.length;i++){
             if(bookMapper.modifyBookPut(idS[i],put)<1){
                 return 0;
@@ -373,7 +381,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int batchRecBook(int[] idS, boolean recommend) {
+    public int batchRecBook(Long[] idS, boolean recommend) {
         Recommend r = new Recommend();
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());
@@ -399,7 +407,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int batchNewProBook(int[] idS, boolean newProduct) {
+    public int batchNewProBook(Long[] idS, boolean newProduct) {
         Recommend r = new Recommend();
         Date date = new Date();
         Timestamp timestamp = new Timestamp(date.getTime());

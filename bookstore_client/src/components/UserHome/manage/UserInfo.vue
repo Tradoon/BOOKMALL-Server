@@ -6,7 +6,7 @@
                   :src="imgS"
                   fit="fill"></el-image>
         <div class="user_card_info">
-          <p style="font-size: 22px;color: #616161">一条小黄龙</p>
+          <p style="font-size: 22px;color: #616161">一条小tradoon</p>
           <p style="color: #757575">修改头像</p>
         </div>
       </div>
@@ -64,7 +64,7 @@
             <div class="modify_box">
               <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="80px">
                 <el-form-item prop="account" label="昵称">
-                  <el-input type="text" v-model="ruleForm.account" autocomplete="off" placeholder="请输入手机号或者邮箱"></el-input>
+                  <el-input type="text" v-model="ruleForm.account" autocomplete="off" placeholder="请输入邮箱"></el-input>
                 </el-form-item>
                 <el-form-item prop="password" label="出生日期">
                   <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.account" style="width: 100%;"></el-date-picker>

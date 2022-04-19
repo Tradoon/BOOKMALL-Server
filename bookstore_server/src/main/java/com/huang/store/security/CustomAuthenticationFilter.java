@@ -14,8 +14,8 @@ import java.io.InputStream;
 import java.util.Map;
 
 /**
- * @author: 黄龙
- * @date: 2020/7/29 12:37
+ * @author: tradoon
+ * @date: 2022
  * @description:
  * UsernamePasswordAuthenticationFilter是AbstractAuthenticationProcessingFilter
  * 针对使用用户名和密码进行身份验证而定制化的一个过滤器。

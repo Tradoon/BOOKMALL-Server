@@ -3,19 +3,24 @@ package com.huang.store.service;
 import com.huang.store.entity.book.BookSort;
 import com.huang.store.mapper.SortMapper;
 import com.huang.store.service.imp.SortService;
+import com.huang.store.util.SnowflakeConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.ws.spi.WebServiceFeatureAnnotation;
 import java.util.List;
 
 @Service("firstSort")
 public class SortServiceImp implements SortService {
+    @Autowired
+    SnowflakeConfig snowflakeConfig;
 
     @Autowired
     SortMapper sortMapper;
 
     @Override
     public int addSort(BookSort bookSort) {
+        bookSort.setId(snowflakeConfig.snowFlackId());
         int result = sortMapper.addSort(bookSort);
         return result;
     }
@@ -34,6 +39,7 @@ public class SortServiceImp implements SortService {
 
     @Override
     public int modifySort(BookSort bookSort) {
+
         int result = sortMapper.modifySort(bookSort);
         return result;
     }
@@ -55,7 +61,7 @@ public class SortServiceImp implements SortService {
     }
 
     @Override
-    public BookSort getBookSortById(int id) {
+    public BookSort getBookSortById(Long id) {
         return sortMapper.getBookSortById(id);
     }
 
@@ -87,12 +93,12 @@ public class SortServiceImp implements SortService {
     }
 
     @Override
-    public List<Integer> getAllFirSortId(String sortName) {
+    public List<Long> getAllFirSortId(String sortName) {
         return sortMapper.getAllFirSortId(sortName);
     }
 
     @Override
-    public List<Integer> getSecSortIdPage(String sortName, int page, int pageSize) {
+    public List<Long> getSecSortIdPage(String sortName, int page, int pageSize) {
         int start=(page-1)*pageSize;
         return sortMapper.getSecSortIdPage(sortName, start, pageSize);
     }

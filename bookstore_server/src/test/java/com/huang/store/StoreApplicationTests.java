@@ -72,14 +72,14 @@ class StoreApplicationTests {
     //测试删除图书
     @Test
     void deleteTest(){
-        int result = bookService.deleteBook(1);
+        int result = bookService.deleteBook(1L);
         System.out.println(result);
     }
 
     //测试查询所有图书
     @Test
     void getBooks(){
-        System.out.println(bookService.getBook(1));
+        System.out.println(bookService.getBook(1L));
         List<Book> books=bookService.getBooks();
         System.out.println(books);
     }
@@ -99,7 +99,7 @@ class StoreApplicationTests {
     //测试修改图书
     @Test
     void modifyBook(){
-        List<Book> bookList1 = bookService.getBookBySecond(121,1,2);
+        List<Book> bookList1 = bookService.getBookBySecond(121L,1,2);
         System.out.println("bookRes1:"+bookList1.toString());
     }
 
@@ -217,11 +217,11 @@ class StoreApplicationTests {
         Date date = new Date();
         Timestamp timeStamp = new Timestamp(date.getTime());
         Recommend recommend = new Recommend();
-        recommend.setBookId(1);
+        recommend.setBookId(1L);
         recommend.setRank(20);
         recommend.setAddTime(timeStamp);
 //        int result = bookService.addToNewProduct(recommend);
-//        int result = bookService.modifyNewProductRank(recommend.getisbn(),recommend.getRank());
+//        int result = bookService.modifyNewProductRank(recommend.getIsbn(),recommend.getRank());
 //        int result = bookService.deleteFromNewProduct(recommend.getBookId());
 //        System.out.println("result"+result);
 //        List<Recommend> list=bookService.getNewProductsByPage(0,3);
@@ -279,7 +279,7 @@ class StoreApplicationTests {
     @Test
     public void  testTopicImg(){
         BookTopic bookTopic = new BookTopic();
-        bookTopic.setId(7);
+        bookTopic.setId(7L);
         bookTopic.setPut(true);
         int result = topicMapper.modifyBookTopic(bookTopic);
         System.out.println(result);
@@ -290,8 +290,8 @@ class StoreApplicationTests {
         List<SubBookTopic> list = new ArrayList<>();
         for(int i=0;i<3;i++){
             SubBookTopic bookTopic = new SubBookTopic();
-            bookTopic.setTopicId(1);
-            bookTopic.setBookId(i);
+            bookTopic.setTopicId(1L);
+            bookTopic.setBookId(Long.valueOf(i));
             list.add(bookTopic);
         }
         int result = topicMapper.batchDelSubTopic(list);
@@ -304,7 +304,7 @@ class StoreApplicationTests {
 //        for(int i=0;i<list.size();i++){
 //            System.out.println(list.get(i).toString());
 //        }
-        List<Book> list = topicMapper.getRecBookList(55);
+        List<Book> list = topicMapper.getRecBookList(55L);
         for(int i=0;i<list.size();i++){
             System.out.println(list.get(i).toString());
         }
@@ -314,7 +314,7 @@ class StoreApplicationTests {
     OrderMapper orderMapper;
     @Test
     public void order(){
-        OrderDto orderDto = orderMapper.findOrderDto(1);
+        OrderDto orderDto = orderMapper.findOrderDto(1L);
 //        System.out.println(orderDto.toString());
 //
     }
@@ -344,7 +344,7 @@ class StoreApplicationTests {
     void testOrder(){
         List<OrderDetail> orderDetailList = new ArrayList<>();
         OrderDetail orderDetail = new OrderDetail();
-        orderDetail.setBookId(55);
+        orderDetail.setBookId(55L);
         orderDetail.setNum(3);
         orderDetail.setOrderId("2");
         orderDetail.setPrice(23);
@@ -366,7 +366,7 @@ class StoreApplicationTests {
     @Test
     void cartTest1(){
         OrderDto orderDto = new OrderDto();
-        orderDto = orderMapper.findOrderDto(31);
+        orderDto = orderMapper.findOrderDto(31L);
         List<OrderDetailDto> orderDetailDtoList  = orderMapper.findOrderDetailDtoList(orderDto.getOrderId());
         System.out.println("===orderDetailDtoList.size()==="+orderDetailDtoList.size()+"======");
         for(int i=0;i<orderDetailDtoList.size();i++){
@@ -391,7 +391,7 @@ class StoreApplicationTests {
 //        redisTemplate.opsForZSet().add("huang","小huangLong",2);
 
         User user = new User();
-        user.setId(2);
+        user.setId(2L);
         user.setAccount("hhh");
         redisTemplate.opsForZSet().add("userList",user,2);
 //
@@ -467,7 +467,7 @@ class StoreApplicationTests {
         book.setAuthor("黄了");
         book.setRank(10);
         book.setBookName("平凡的世界");
-        book.setisbn("9994933234899");
+        book.setIsbn("9994933234899");
         book.setPublish("人民出版社");
         book.setBirthday(new Timestamp(new Date().getTime()));
         book.setMarketPrice(123.0);
@@ -481,7 +481,7 @@ class StoreApplicationTests {
 //        List<Book> booksByPage = bookService.getBooksByPage(1, 5);
 //        System.out.println(booksByPage);
 
-        Book book1 = bookService.getBook(120);
+        Book book1 = bookService.getBook(120L);
         System.out.println(book1);
     }
 

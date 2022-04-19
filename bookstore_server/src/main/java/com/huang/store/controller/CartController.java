@@ -40,7 +40,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/addCart")
-    public Map<String,Object> addCart(@RequestParam("id")int id,
+    public Map<String,Object> addCart(@RequestParam("id")Long id,
                                       @RequestParam("num")int num,
                                       @RequestParam("account")String account){
         if(cartService.existProduct(account,id)>0){//如果购物车中已经存在图书
@@ -59,7 +59,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/delCart")
-    public Map<String,Object> addCart(@RequestParam("id")int id,
+    public Map<String,Object> addCart(@RequestParam("id")Long id,
                                       @RequestParam("account")String account){
         if(cartService.deleteProduct(account,id)>0){
             return ResultUtil.resultCode(200,"删除成功");
@@ -74,7 +74,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/batchDelCart")
-    public Map<String,Object> addCart(@RequestParam("ids")int[] ids,
+    public Map<String,Object> addCart(@RequestParam("ids")Long[] ids,
                                       @RequestParam("account")String account){
         if(cartService.delBatchProduct(account,ids)>0){
             return ResultUtil.resultCode(200,"删除成功");
@@ -90,7 +90,7 @@ public class CartController {
      * @return
      */
     @GetMapping("/modifyCart")
-    public Map<String,Object> modifyCart(@RequestParam("id")int id,
+    public Map<String,Object> modifyCart(@RequestParam("id")Long id,
                                       @RequestParam("num")int num,
                                       @RequestParam("account")String account){
         if(cartService.modifyProductNum(account,id,num)>0){

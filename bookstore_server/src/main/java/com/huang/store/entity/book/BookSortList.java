@@ -1,29 +1,21 @@
 package com.huang.store.entity.book;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
- * @author: 黄龙
- * @date: 2020/6/17 10:28
+ * @author: tradoon
+ * @date: 2022
  * @description: 图书和分类关联类
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookSortList {
-    private int bookSortId;
-    private int bookId;
+    private Long bookSortId;
+    private Long bookId;
 
-    public int getBookSortId() {
-        return bookSortId;
-    }
-
-    public void setBookSortId(int bookSortId) {
-        this.bookSortId = bookSortId;
-    }
-
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
 
 
     @Override

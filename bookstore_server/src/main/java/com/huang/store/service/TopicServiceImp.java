@@ -24,7 +24,7 @@ public class TopicServiceImp implements TopicService {
     }
 
     @Override
-    public int delBookTopic(int id) {
+    public int delBookTopic(Long id) {
         int result = topicMapper.delBookTopic(id);
         return result;
     }
@@ -36,7 +36,7 @@ public class TopicServiceImp implements TopicService {
     }
 
     @Override
-    public BookTopic getBookTopic(int id) {
+    public BookTopic getBookTopic(Long id) {
         return topicMapper.getBookTopic(id);
     }
 
@@ -62,7 +62,7 @@ public class TopicServiceImp implements TopicService {
     }
 
     @Override
-    public int delSubBookTopic(int topicId, int bookId) {
+    public int delSubBookTopic(Long topicId, Long bookId) {
         return topicMapper.delSubBookTopic(topicId, bookId);
     }
 
@@ -77,40 +77,40 @@ public class TopicServiceImp implements TopicService {
     }
 
     @Override
-    public SubBookTopic getSubBookTopic(int topicId, int bookId) {
+    public SubBookTopic getSubBookTopic(Long topicId, Long bookId) {
         return topicMapper.getSubBookTopic(topicId, bookId);
     }
 
     @Override
-    public List<Book> getSubBookTopicList(int topicId, int page, int pageSize) {
+    public List<Book> getSubBookTopicList(Long topicId, int page, int pageSize) {
         int start = (page-1)*pageSize;
         return topicMapper.getSubBookTopicList(topicId, start, pageSize);
     }
 
     @Override
-    public int getSubTopicCount(int topicId) {
+    public int getSubTopicCount(Long topicId) {
         return topicMapper.getSubTopicCount(topicId);
     }
 
 
     @Override
-    public List<Book> getNoAddBookPage(int topicId, int page, int pageSize) {
+    public List<Book> getNoAddBookPage(Long topicId, int page, int pageSize) {
         page = (page-1)*pageSize;
         return topicMapper.getNoAddBookPage(topicId, page, pageSize);
     }
 
     @Override
-    public List<TopicBook> getTopicBookList(int topicId) {
+    public List<TopicBook> getTopicBookList(Long topicId) {
         return topicMapper.getTopicBookList(topicId);
     }
 
     @Override
-    public int getNoAddCount(int topicId) {
+    public int getNoAddCount(Long topicId) {
         return topicMapper.getNoAddCount(topicId);
     }
 
     @Override
-    public String getReason(int topicId, int bookId) {
+    public String getReason(Long topicId, Long bookId) {
         return topicMapper.getReason(topicId, bookId);
     }
 }

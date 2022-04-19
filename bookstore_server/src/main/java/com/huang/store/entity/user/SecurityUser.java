@@ -10,8 +10,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author: 黄龙
- * @date: 2020/7/20 14:54
+ * @author: tradoon
+ * @date: 2022
  * @description: 安全用户类 用于SpringSecurity中
  */
 @Data
@@ -21,6 +21,17 @@ public class SecurityUser implements UserDetails {
     private String password;
     private boolean enabled;
     private List<GrantedAuthority> roles;
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
+    }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -39,7 +50,7 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return !enabled;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {

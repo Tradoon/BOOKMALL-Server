@@ -8,12 +8,12 @@ import java.util.List;
 @Repository
 public interface PublishMapper {
     int addPublish(Publish publish);
-    int deletePublish(int id);
+    int deletePublish(Long id);
     int modifyPublish(Publish publish);
-    int modifyIsShow(int id);
+    int modifyIsShow(Long id);
     int getPublishCount();
     List<Publish> getPublishByPage(int page,int pageSize);
     List<String> getPublishNames();
-    Publish getPublishById(int id);
+    Publish getPublishById(Long id);
     Publish getPublishByName(String name);
 }

@@ -58,14 +58,34 @@ public class SortController {
      */
     @PostMapping("/modifyBookSort")
     public Map<String,Object> modifyBookSort(@RequestBody BookSort bookSort) {
-        if(bookSort.getUpperName().equals("无")){//如果修改后上一级为无
-            BookSort bookSort1=sortService.getBookSortById(bookSort.getId());//得到修改分类原来的值
-            System.out.println(bookSort1.toString());
-            if(!bookSort1.getSortName().equals(bookSort.getSortName())){//如果修改分类的的原来的值不等于现
-                sortService.modifySortUpperName(bookSort1.getSortName(),bookSort.getSortName());
-            }
+        BookSort bookSort1=sortService.getBookSortById(bookSort.getId());
+        BookSort updateBookSort = new BookSort();
+        updateBookSort.setId(bookSort.getId());
+        if(bookSort.equals(bookSort1)){
+            return ResultUtil.resultCode(200, "图书信息未做任何修改");
         }
-        if (sortService.modifySort(bookSort) > 0) {
+        if(!bookSort.getSortName().equals(bookSort1.getSortName())){
+            updateBookSort.setSortName(bookSort.getSortName());
+        }
+        if(!bookSort.getUpperName().equals(bookSort1.getUpperName())){
+            updateBookSort.setUpperName(bookSort.getUpperName());
+        }
+        if(!bookSort.getLevel().equals(bookSort1.getLevel())){
+            updateBookSort.setLevel(bookSort.getLevel());
+        }
+        if(bookSort.getRank()==bookSort1.getRank()){
+            updateBookSort.setRank(bookSort.getRank());
+        }
+
+
+//        if(bookSort.getUpperName().equals("无")){//如果修改后上一级为无
+////            BookSort bookSort1=sortService.getBookSortById(bookSort.getId());//得到修改分类原来的值
+//            System.out.println(bookSort1.toString());
+//            if(!bookSort1.getSortName().equals(bookSort.getSortName())){//如果修改分类的的原来的值不等于现
+//                sortService.modifySortUpperName(bookSort1.getSortName(),bookSort.getSortName());
+//            }
+//        }
+        if (sortService.modifySort(updateBookSort) > 0) {
             return ResultUtil.resultCode(200, "修改图书分类成功");
         }
         return ResultUtil.resultCode(500, "修改图书分类失败");

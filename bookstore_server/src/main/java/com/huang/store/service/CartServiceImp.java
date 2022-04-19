@@ -17,7 +17,7 @@ public class CartServiceImp implements CartService {
     CartMapper cartMapper;
 
     @Override
-    public int addProduct(String account,int id,int num) {
+    public int addProduct(String account,Long id,int num) {
         Cart cart = new Cart();
         cart.setAccount(account);
         cart.setAddTime(new Timestamp(new Date().getTime()));
@@ -28,23 +28,23 @@ public class CartServiceImp implements CartService {
     }
 
     @Override
-    public int existProduct(String account, int id) {
+    public int existProduct(String account, Long id) {
         return cartMapper.existProduct(account, id);
     }
 
     @Override
-    public int deleteProduct(String account, int id) {
+    public int deleteProduct(String account, Long id) {
         int result = cartMapper.deleteProduct(account,id);
         return result;
     }
 
     @Override
-    public int delBatchProduct(String account,int[] ids) {
+    public int delBatchProduct(String account,Long[] ids) {
         return cartMapper.delBatchProduct(account,ids);
     }
 
     @Override
-    public int modifyProductNum(String account,int id,int num) {
+    public int modifyProductNum(String account,Long id,int num) {
         Cart cart = new Cart();
         cart.setNum(num);
         cart.setId(id);
@@ -66,7 +66,7 @@ public class CartServiceImp implements CartService {
     }
 
     @Override
-    public int getBookCount(String account, int id) {
+    public int getBookCount(String account, Long id) {
         return cartMapper.getBookCount(account, id);
     }
 }

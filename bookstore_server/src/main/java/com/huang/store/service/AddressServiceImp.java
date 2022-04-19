@@ -20,7 +20,7 @@ public class AddressServiceImp implements AddressService {
     }
 
     @Override
-    public int deleteAddress(int id) {
+    public int deleteAddress(Long id) {
         int result = addressMapper.deleteAddress(id);
         return result;
     }

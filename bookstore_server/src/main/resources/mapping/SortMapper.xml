@@ -4,8 +4,8 @@
 
     <!--对书的分类 -->
     <insert id="addSort" parameterType="com.huang.store.entity.book.BookSort">
-        insert into booksort(upperName,sortName,level,rank)
-        values (#{upperName},#{sortName},#{level},#{rank})
+        insert into booksort(`id`,`uppername`,`sortname`,`level`,`rank`)
+        values (#{id},#{upperName},#{sortName},#{level},#{rank})
     </insert>
 
     <delete id="deleteSort">
@@ -19,11 +19,21 @@
 
     <update id="modifySort">
         update booksort
-            set upperName=#{upperName},
-                sortName=#{sortName},
-                rank=#{rank},
-                sortName=#{sortName}
-            where id=#{id}
+        <set>
+            <if test="upperName!=null">
+                `upperName`=#{upperName},
+            </if>
+            <if test="sortName!=null">
+                `sortName`=#{sortName},
+            </if>
+            <if test="rank!=null">
+                `rank`=#{rank},
+            </if>
+            <if test="sortName!=null">
+                `sortName`=#{sortName}
+            </if>
+        </set>
+        where `id`=#{id}
     </update>
 
     <update id="modifySortUpperName">
@@ -64,12 +74,12 @@
         select sortName from booksort where level="级别一"
     </select>
 
-    <select id="getAllFirSortId" resultType="int">
+    <select id="getAllFirSortId" resultType="Long">
         select id from booksort where (upperName="无" and sortName=#{sortName}) or upperName=#{sortName}
     </select>
 
 
-    <select id="getSecSortIdPage" resultType="int">
+    <select id="getSecSortIdPage" resultType="Long">
         select id from booksort where upperName=#{sortName} limit #{page},#{pageSize}
     </select>
 

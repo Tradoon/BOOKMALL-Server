@@ -200,7 +200,7 @@
                 active: 2,
                 operatorList:[
                     {
-                        name: "黄龙",
+                        name: "tradoon",
                         operateTime:null,
                         orderStatus: null,
                         logisticsStatus: null,//发货状态

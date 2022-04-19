@@ -21,7 +21,7 @@ public class PublishServiceImp implements PublishService {
     }
 
     @Override
-    public int deletePublish(int id) {
+    public int deletePublish(Long id) {
         int result = publishMapper.deletePublish(id);
         return result;
     }
@@ -33,7 +33,7 @@ public class PublishServiceImp implements PublishService {
     }
 
     @Override
-    public int modifyIsShow(int id) {
+    public int modifyIsShow(Long id) {
         int result = publishMapper.modifyIsShow(id);
         return result;
     }
@@ -56,7 +56,7 @@ public class PublishServiceImp implements PublishService {
     }
 
     @Override
-    public Publish getPublishById(int id) {
+    public Publish getPublishById(Long id) {
         return publishMapper.getPublishById(id);
     }
 

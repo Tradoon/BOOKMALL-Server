@@ -50,7 +50,7 @@ public class OrderController {
      * @return
      */
     @GetMapping("/initOrder")
-    public Map<String,Object> initOrder(@RequestParam(value = "ids") int[] ids,
+    public Map<String,Object> initOrder(@RequestParam(value = "ids") Long[] ids,
                                         @RequestParam(value = "from") int from,
                                         @RequestParam(value = "account") String account){
         for(int i=0;i<ids.length;i++){
@@ -135,11 +135,11 @@ public class OrderController {
      * @return
      */
     @GetMapping("/getOrderDto")
-    public Map<String,Object> getOrderDto(@RequestParam("id")int id){
+    public Map<String,Object> getOrderDto(@RequestParam("id")Long id){
         OrderDto orderDto = orderService.findOrderDto(id);
         List<OrderDetailDto> orderDetailDtoList = orderService.findOrderDetailDtoList(orderDto.getOrderId());
         for(int i=0;i<orderDetailDtoList.size();i++){
-            String img = bookService.getBookCover(orderDetailDtoList.get(i).getBook().getisbn());
+            String img = bookService.getBookCover(orderDetailDtoList.get(i).getBook().getIsbn());
             orderDetailDtoList.get(i).getBook().setCoverImg(img);
             System.out.println("=======orderDetailDtoList.size():====="+orderDetailDtoList.size()+"============");
         }
@@ -156,7 +156,7 @@ public class OrderController {
      * @return
      */
     @GetMapping("/delOrder")
-    public Map<String,Object> delOrder(@RequestParam("id")int id){
+    public Map<String,Object> delOrder(@RequestParam("id")Long id){
         System.out.println("============="+id+"=================");
         if(orderService.delOrder(id)>0){
             return ResultUtil.resultCode(200,"删除订单成功");
@@ -165,7 +165,7 @@ public class OrderController {
     }
 
     @GetMapping("/deliverOrder")
-    public Map<String,Object> delOrdr(@RequestParam("id")int id,
+    public Map<String,Object> delOrdr(@RequestParam("id")Long id,
                                       @RequestParam("logisticsCompany")int logisticsCompany,
                                       @RequestParam("logisticsNum")String logisticsNum){
         System.out.println("============="+id+"=================");
@@ -188,7 +188,7 @@ public class OrderController {
             List<String> coverImgList = new ArrayList<>();
             for(int j=0;j<orderDetailDtoList.size() && j<5;j++){
                 System.out.println("======orderDetailDtoList.get(j)====:"+orderDetailDtoList.get(j)+"=========");
-                String img = bookService.getBookCover(orderDetailDtoList.get(j).getBook().getisbn());
+                String img = bookService.getBookCover(orderDetailDtoList.get(j).getBook().getIsbn());
                 coverImgList.add(img);
             }
             System.out.println("=====coverImgList.size()====="+coverImgList.size()+"===================");
@@ -208,7 +208,7 @@ public class OrderController {
      * @return
      */
     @GetMapping("/modifyOrderStatus")
-    public Map<String,Object> modifyOrderStatus(@RequestParam("id")int id,
+    public Map<String,Object> modifyOrderStatus(@RequestParam("id")Long id,
                                       @RequestParam("orderStatus")String orderStatus){
         System.out.println("========确认收货===="+id);
         if(orderService.modifyOrderStatus(id,orderStatus)>0){

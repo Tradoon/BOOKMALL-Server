@@ -23,15 +23,15 @@ public interface OrderMapper {
 
     int batchAddOrderDetail(List<OrderDetail> item);//批量添加订单明细
 
-    int delOrder(int id);//删除订单  这里涉及了多表删除  并且只能删除已经完成了的订单
+    int delOrder(Long id);//删除订单  这里涉及了多表删除  并且只能删除已经完成了的订单
 
     int batchDelOrder(List<Integer> item);//批量删除 这里涉及多表联合删除
 
     int modifyOrder(Order order);//修改订单 这里根据条件进行修改
 
-    int modifyLogistics(int id,int logisticsCompany,String logisticsNum);//修改物流信息
+    int modifyLogistics(Long id,int logisticsCompany,String logisticsNum);//修改物流信息
 
-    OrderDto findOrderDto(int id);//得到某个订单的所有信息明细
+    OrderDto findOrderDto(Long id);//得到某个订单的所有信息明细
 
     List<OrderDetailDto> findOrderDetailDtoList(String orderId);//得到指定订单所有图书的明细信息
 

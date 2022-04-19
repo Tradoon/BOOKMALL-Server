@@ -79,7 +79,7 @@ public class TopicController {
      */
     @GetMapping("/delTopicImg")
     public Map<String,Object> delImg(@RequestParam(value = "url") String url,
-                                     @RequestParam(value = "id")int id){
+                                     @RequestParam(value = "id")Long id){
         System.out.println("删除图片");
         String path = basePath+url;
         System.out.println("删除的图片的路径是："+path);
@@ -103,7 +103,8 @@ public class TopicController {
     @RequestMapping(value = "/uploadTopicImg")
     public Map<String,Object> upload(@RequestParam Map<String,String> map,@RequestParam("file") MultipartFile file) {
         Map<String,Object> m = new HashMap<>();
-        int id = Integer.parseInt(map.get("id"));
+//        int id = Integer.parseInt(map.get("id"));
+        Long id=Long.valueOf(map.get("id"));
         BookTopic bookTopic = new BookTopic();
         bookTopic.setId(id);
         String imgName = UploadUtil.uploadFile(file,basePath+coverPath);
@@ -123,7 +124,7 @@ public class TopicController {
      */
     @GetMapping("/modifyTopicRank")
     public Map<String,Object> modifyRank(@RequestParam(value = "rank") int rank,
-                                          @RequestParam(value = "id")int id){
+                                          @RequestParam(value = "id")Long id){
         System.out.println("说明修改排序的函数器作用了");
         System.out.println(rank);
         BookTopic bookTopic = new BookTopic();
@@ -144,7 +145,7 @@ public class TopicController {
      */
     @GetMapping("/modifyTopicPut")
     public Map<String,Object> modifyPut(@RequestParam(value = "put") boolean put,
-                                          @RequestParam(value = "id")int id){
+                                          @RequestParam(value = "id")Long id){
         BookTopic bookTopic = new BookTopic();
         bookTopic.setPut(put);
         bookTopic.setId(id);
@@ -160,7 +161,7 @@ public class TopicController {
      * @return
      */
     @GetMapping("/delTopic")
-    public Map<String,Object> delTopic(@RequestParam(value = "id")int id){
+    public Map<String,Object> delTopic(@RequestParam(value = "id")Long id){
         System.out.println(id);
         if(topicService.delBookTopic(id)>0){
             return ResultUtil.resultCode(200,"删除书单成功");
@@ -174,7 +175,7 @@ public class TopicController {
      * @return
      */
     @GetMapping("/getTopic")
-    public Map<String,Object> getTopic(@RequestParam(value = "id")int id){
+    public Map<String,Object> getTopic(@RequestParam(value = "id")Long id){
         System.out.println(id);
         BookTopic bookTopic = topicService.getBookTopic(id);
         Map<String,Object> map = new HashMap<>();
@@ -209,7 +210,7 @@ public class TopicController {
     @GetMapping("/getNoAddBookList")
     public Map<String,Object> getTopicList(@RequestParam(value = "page")int page,
                                            @RequestParam(value = "pageSize")int pageSize,
-                                           @RequestParam(value = "topicId")int topicId
+                                           @RequestParam(value = "topicId")Long topicId
                                            ){
         System.out.println("说明已经请求到了为添加到书单的图书");
         List<Book> bookList = topicService.getNoAddBookPage(topicId,page, pageSize);
@@ -230,8 +231,8 @@ public class TopicController {
      * @return
      */
     @GetMapping("/addSubTopic")
-    public Map<String,Object> addSubTopic(@RequestParam(value = "id")int id,
-                                          @RequestParam(value = "bookId")int bookId){
+    public Map<String,Object> addSubTopic(@RequestParam(value = "id")Long id,
+                                          @RequestParam(value = "bookId")Long bookId){
         System.out.println("说明添加请求已经到添加图书到书单中");
         SubBookTopic subBookTopic = new SubBookTopic();
         subBookTopic.setTopicId(id);
@@ -250,8 +251,8 @@ public class TopicController {
      * @return
      */
     @GetMapping("/delSubTopic")
-    public Map<String,Object> delSubTopic(@RequestParam(value = "id")int id,
-                                          @RequestParam(value = "bookId")int bookId){
+    public Map<String,Object> delSubTopic(@RequestParam(value = "id")Long id,
+                                          @RequestParam(value = "bookId")Long bookId){
         System.out.println("说明删除请求已经到删除图书的处理中");
         if(topicService.delSubBookTopic(id, bookId)>0){
             return ResultUtil.resultCode(200,"删除书单图书成功");
@@ -266,8 +267,8 @@ public class TopicController {
      * @return
      */
     @GetMapping("/getReason")
-    public Map<String,Object> getRecReason(@RequestParam(value = "topicId")int topicId,
-                                          @RequestParam(value = "bookId")int bookId){
+    public Map<String,Object> getRecReason(@RequestParam(value = "topicId")Long topicId,
+                                          @RequestParam(value = "bookId")Long bookId){
         System.out.println("得到推荐理由起作用了");
         String reason = topicService.getReason(topicId, bookId);
         Map<String,Object> map = new HashMap<>();
@@ -283,8 +284,8 @@ public class TopicController {
      * @return
      */
     @GetMapping("/modifySubTopic")
-    public Map<String,Object> delSubTopic(@RequestParam(value = "id")int id,
-                                          @RequestParam(value = "bookId")int bookId,
+    public Map<String,Object> delSubTopic(@RequestParam(value = "id")Long id,
+                                          @RequestParam(value = "bookId")Long bookId,
                                           @RequestParam(value = "recReason")String recReason){
         SubBookTopic subBookTopic = new SubBookTopic();
         subBookTopic.setBookId(bookId);
@@ -305,9 +306,9 @@ public class TopicController {
      * @return
      */
     @PostMapping("/batchTopic")
-    public Map<String,Object> batchTopic(@RequestParam(value = "ids") int[] ids,
+    public Map<String,Object> batchTopic(@RequestParam(value = "ids") Long[] ids,
                                          @RequestParam(value = "operator")String operator,
-                                         @RequestParam(value = "topicId")int topicId){
+                                         @RequestParam(value = "topicId")Long topicId){
         System.out.println("说明已经请求到了");
         System.out.println(Arrays.toString(ids));
         System.out.println(operator);
@@ -340,7 +341,7 @@ public class TopicController {
      * @return
      */
     @GetMapping("/getSubTopicList")
-    public Map<String,Object> getSubTopicList(@RequestParam(value = "id")int topicId,
+    public Map<String,Object> getSubTopicList(@RequestParam(value = "id")Long topicId,
                                               @RequestParam(value = "page")int page,
                                               @RequestParam(value = "pageSize")int pageSize){
         List<Book> subBookTopicList = topicService.getSubBookTopicList(topicId, page, pageSize);
@@ -357,7 +358,7 @@ public class TopicController {
      * @return
      */
     @GetMapping("/getTopicBookList")
-    public Map<String,Object> getSubTopicList(@RequestParam(value = "id")int topicId){
+    public Map<String,Object> getSubTopicList(@RequestParam(value = "id")Long topicId){
         List<TopicBook> TopicBookList = topicService.getTopicBookList(topicId);
         for(int i=0;i<TopicBookList.size();i++){
             String img = bookService.getBookCover(TopicBookList.get(i).getIsbn());

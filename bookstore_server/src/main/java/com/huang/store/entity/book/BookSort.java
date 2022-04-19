@@ -1,55 +1,37 @@
 package com.huang.store.entity.book;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Objects;
+
 /**
- * @author: 黄龙
- * @date: 2020/6/10 11:26
+ * @author: tradoon
+ * @date: 2022
  * @description: 图书分类
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookSort {
-    private int id;
+    private Long id;
     private String sortName;
     private String upperName;//上一级的标签名
     private String level;
     private int rank;
 
-    public int getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookSort bookSort = (BookSort) o;
+        return rank == bookSort.rank && Objects.equals(sortName, bookSort.sortName) && Objects.equals(upperName, bookSort.upperName) && Objects.equals(level, bookSort.level);
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getSortName() {
-        return sortName;
-    }
-
-    public void setSortName(String sortName) {
-        this.sortName = sortName;
-    }
-
-    public String getUpperName() {
-        return upperName;
-    }
-
-    public void setUpperName(String upperName) {
-        this.upperName = upperName;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
+    @Override
+    public int hashCode() {
+        return Objects.hash(sortName, upperName, level, rank);
     }
 
     @Override
