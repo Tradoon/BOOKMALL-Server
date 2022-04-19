@@ -23,8 +23,10 @@ import com.huang.store.entity.book.Book;
 @RequestMapping(value = "/book")
 public class BookController {
 
-    private String basePath="D://ITsoftware//IDEA//data//Vue//book_01//";
+//    private String basePath="D://ITsoftware//IMG//data//Vue//book_01//";
+    private String basePath="F://productTest//mall//前台//bookStore-Springboot-Vue//bookstore_client//";
     private String bookPath="static//image//book//";
+
 
     @Autowired
     @Qualifier("firstVersion")

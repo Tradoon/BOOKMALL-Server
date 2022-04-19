@@ -265,8 +265,10 @@ class StoreApplicationTests {
 //        System.out.println(subBookTopic1.toString());
 
     }
-    private String basePath="D://ITsoftware//IDEA//data//Vue//book_01//";
+//    private String basePath="D://ITsoftware//IDEA//data//Vue//book_01//";
     private String bookPath="static//image//";
+    private String basePath="F://productTest//mall//前台//bookStore-Springboot-Vue//bookstore_client//";
+
 
     @Autowired
     BookMapper mapper;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @ResponseBody
@@ -101,6 +102,17 @@ public class PublishController {
      */
     @PostMapping("/modifyPublish")
     Map<String,Object> modifyPublish(@RequestBody Publish publish){
+        //判断是否需要修改
+        Long publishId=publish.getId();
+        Publish dbPublish = publishService.getPublishById(publishId);
+        if(publish.equals(dbPublish)){
+            return ResultUtil.resultCode(200,"出版社信息未修改");}
+        //判断名字在数据库中是否存在
+        Publish publishByName = publishService.getPublishByName(publish.getName());
+        if(!Objects.isNull(publishByName)){
+            return ResultUtil.resultCode(500,"出版社名字已存在");
+        }
+        //进行修改
         Map<String,Object> map = new HashMap<>();
         if(publishService.modifyPublish(publish)>0){
             System.out.println("修改成功");

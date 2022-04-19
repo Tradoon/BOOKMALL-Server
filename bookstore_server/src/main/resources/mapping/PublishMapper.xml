@@ -3,8 +3,8 @@
 <mapper namespace="com.huang.store.mapper.PublishMapper">
 
     <insert id="addPublish" parameterType="com.huang.store.entity.book.Publish">
-        insert into publish(name,showPublish,rank)
-            values (#{name},#{showPublish},#{rank})
+        insert into publish(`id`,`name`,`showPublish`,`rank`)
+            values (#{id},#{name},#{showPublish},#{rank})
     </insert>
 
     <delete id="deletePublish">
@@ -12,9 +12,9 @@
     </delete>
 
     <update id="modifyPublish" parameterType="com.huang.store.entity.book.Publish">
-        update publish set name=#{name},
-                           showPublish=#{showPublish},
-                           rank=#{rank}
+        update publish set `name`=#{name},
+                           `showPublish`=#{showPublish},
+                           `rank`=#{rank}
                        where id=#{id}
     </update>
 

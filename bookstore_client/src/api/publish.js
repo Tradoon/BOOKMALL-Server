@@ -5,7 +5,7 @@ const BASE_URL = 'http://localhost:8082'
 
 
 //添加出版社
-export const reqAddPublish = (publish) => ajax(BASE_URL+'/addPublish', {
+export const reqAddPublish = (publish) => ajax(BASE_URL+'/admin/addPublish', {
   name: publish.name,
   showPublish: publish.showPublish,
   rank: publish.rank,

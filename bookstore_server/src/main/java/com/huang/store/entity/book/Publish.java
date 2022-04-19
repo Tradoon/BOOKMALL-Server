@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 /**
  * @author: tradoon
  * @date: 2022
@@ -20,6 +22,19 @@ public class Publish {
     private Integer rank;//排序值
     private Integer num;//该出版社中有多少书
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Publish publish = (Publish) o;
+        return showPublish == publish.showPublish && Objects.equals(name, publish.name) && Objects.equals(rank, publish.rank) && Objects.equals(num, publish.num);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, showPublish, rank, num);
+    }
 
     @Override
     public String toString() {

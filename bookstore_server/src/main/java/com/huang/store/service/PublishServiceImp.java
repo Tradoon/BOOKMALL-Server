@@ -3,6 +3,7 @@ package com.huang.store.service;
 import com.huang.store.entity.book.Publish;
 import com.huang.store.mapper.PublishMapper;
 import com.huang.store.service.imp.PublishService;
+import com.huang.store.util.SnowflakeConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,14 @@ import java.util.List;
 public class PublishServiceImp implements PublishService {
 
     @Autowired
+    SnowflakeConfig snowflakeConfig;
+
+    @Autowired
     PublishMapper publishMapper;
 
     @Override
     public int addPublish(Publish publish) {
+        publish.setId(snowflakeConfig.snowFlackId());
         int result = publishMapper.addPublish(publish);
         return result;
     }

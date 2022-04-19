@@ -22,8 +22,10 @@ import java.util.*;
 @RequestMapping(value = "/topic")
 public class TopicController {
 
-    private String basePath="D://ITsoftware//IDEA//data//Vue//book_01//";
+//    private String basePath="D://ITsoftware//IMG//data//Vue//book_01//";
     private String coverPath="static//image//topic//";
+    private String basePath="F://productTest//mall//前台//bookStore-Springboot-Vue//bookstore_client//";
+
 
     @Qualifier("firstTopic")
     @Autowired
