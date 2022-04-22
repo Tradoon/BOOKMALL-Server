@@ -94,7 +94,7 @@ public class OrderServiceImpl implements OrderService {
                     return false;//获取分布式锁出错了！
                 }
                 if(redisTemplate.hasKey(book_stock+orderBookDto.getId())){//如果缓存中有库存数据
-                    int stock = Integer.parseInt((String) redisTemplate.opsForValue().get(book_stock+orderBookDto.getId()));
+                    int stock = Integer.parseInt(redisTemplate.opsForValue().get(book_stock+orderBookDto.getId()).toString());
                     if(stock>orderBookDto.getNum()){
                         int realStock = stock-orderBookDto.getNum();
                         redisTemplate.opsForValue().set(book_stock+orderBookDto.getId(),realStock);//更新库存缓存
@@ -106,7 +106,7 @@ public class OrderServiceImpl implements OrderService {
                             redisTemplate.opsForValue().set(book_prefix+book.getId(),book);//更新图书缓存中的数据
                         }
                         Book book = bookMapper.getBook(orderBookDto.getId());
-                        redisTemplate.opsForValue().set(book_prefix+book.getId(),book);//更新图书缓存中的数据
+//                        redisTemplate.opsForValue().set(book_prefix+book.getId(),book);//更新图书缓存中的数据
 //                        redisTemplate.opsForZSet().remove(book);//删除集合中原来的图书数据
                         book.setStock(realStock);
 //                        redisTemplate.opsForZSet().add(bookList_prefix,book,book.getRank());//添加新的图书数据到缓存集合中去
@@ -145,6 +145,7 @@ public class OrderServiceImpl implements OrderService {
             System.out.println("=====orderDetailList[i]====="+orderDetailList.get(i));
         }
         System.out.println("=============初始化总的订单没有问题===========");
+        order.setBeUserDelete(String.valueOf(false));
         orderMapper.addOrder(order);//添加总的订单
         System.out.println("============添加总的订单成功============");
 
@@ -167,7 +168,7 @@ public class OrderServiceImpl implements OrderService {
     public int userDelOrder(Long id) {
         Order order = new Order();
         order.setId(id);
-        order.setBeUserDelete(true);
+        order.setBeUserDelete(String.valueOf(true));
         return orderMapper.modifyOrder(order);
     }
 

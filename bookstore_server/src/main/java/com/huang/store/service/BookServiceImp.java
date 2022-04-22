@@ -1,5 +1,7 @@
 package com.huang.store.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.huang.store.entity.book.*;
 import com.huang.store.entity.dto.OrderBookDto;
 import com.huang.store.mapper.BookMapper;
@@ -12,10 +14,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service("firstVersion")
 public class BookServiceImp implements BookService {
@@ -140,7 +139,9 @@ public class BookServiceImp implements BookService {
 
     @Override
     public List<Book> getBooksByPage(int page, int pageSize) {
-        int start = (page-1)*pageSize;
+        Page<Object> pageHelper = PageHelper.startPage(page, pageSize);
+
+//        int start = (page-1)*pageSize;
 //        if(redisTemplate.hasKey(bookList_prefix)){
 //            System.out.println("======从缓存中获取图书集合=======");
 //            Set range = redisTemplate.opsForZSet().range(bookList_prefix, start, start + pageSize);
@@ -149,7 +150,7 @@ public class BookServiceImp implements BookService {
 //        }else {
 //            return bookMapper.getBooksByPage(start,pageSize);
 //        }
-        return bookMapper.getBooksByPage(start,pageSize);
+        return bookMapper.getBooksByPage();
     }
 
     @Override
@@ -187,7 +188,10 @@ public class BookServiceImp implements BookService {
             return book;
         }
         System.out.println("=========从数据库中读取单本图书的数据==========");
-        return bookMapper.getBook(id);
+        Book dbBook = bookMapper.getBook(id);
+        redisTemplate.opsForValue().set(book_prefix+id,dbBook);
+        return dbBook;
+
     }
 
     @Override
@@ -281,6 +285,7 @@ public class BookServiceImp implements BookService {
 
     @Override
     public int addToNewProduct(Recommend newProduct) {
+        newProduct.setId(snowflakeConfig.snowFlackId());
         int result=bookMapper.addToNewProduct(newProduct);
         return result;
     }
@@ -313,7 +318,9 @@ public class BookServiceImp implements BookService {
     //有关图书分类的操作
     @Override
     public int addBookToSort(Long bookSortId, Long bookId) {
-        int result =bookMapper.addBookToSort(bookSortId, bookId);
+        Long id=snowflakeConfig.snowFlackId();
+
+        int result =bookMapper.addBookToSort(id,bookSortId, bookId);
         return result;
     }
 

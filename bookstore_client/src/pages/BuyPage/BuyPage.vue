@@ -135,7 +135,7 @@
                 //添加修改的地址
                 address:{
                     id: null,
-                    account: "黄小龙",
+                    account: "123@123.com",
                     name: "",
                     phone: "",
                     addr: "",
@@ -146,20 +146,20 @@
                     addressList:[
                         {
                             id: 1,
-                            account: "黄小龙",
+                            account: "123@123.com",
                             name: "小胖",
-                            phone: "18988798892",
-                            addr: "江西抚州市临川区西大街街道东华理工大学长江学院本部(330006)",
+                            phone: "15229002013",
+                            addr: "随便哪个地方",
                             label: "家",
                             off: false,
                             select:false,
                         },
                         {
                             id: 2,
-                            account: "黄小龙",
+                            account: "123@123.com",
                             name: "小胖",
-                            phone: "18988798892",
-                            addr: "江西抚州市临川区西大街街道东华理工大学长江学院本部(330006)",
+                            phone: "15229002013",
+                            addr: "随便哪个地方",
                             label: "家",
                             off: false,
                             select: false
@@ -168,7 +168,7 @@
                     //选中的地址
                     address:{
                         id: null,
-                        account: "黄小龙",
+                        account: "123@123.com",
                         name: "",
                         phone: "",
                         addr: "",

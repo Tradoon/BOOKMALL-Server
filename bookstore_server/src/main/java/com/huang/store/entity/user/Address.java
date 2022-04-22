@@ -19,7 +19,7 @@ public class Address {
     private String phone;//收货人电话
     private String addr;//具体地址
     private String label;//标签
-    private boolean off;//是否被设置为删除(这里的删除不是真的删除，只是这个地址不在出现在用户的地址列表中)
+    private String off;//是否被设置为删除(这里的删除不是真的删除，只是这个地址不在出现在用户的地址列表中)
 
 
 

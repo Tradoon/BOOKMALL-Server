@@ -17,7 +17,7 @@ public interface BookMapper {
     int modifyBookStock(Long id,int stockNum);//减库存stockNum
     int deleteBook(Long id);//删除图书
     List<Book> getBooks();//得到所有图书
-    List<Book> getBooksByPage(int page,int pageSize);//按页得到图书集合
+    List<Book> getBooksByPage();//按页得到图书集合
     List<Book> getNewPutBookList(int page,int pageSize);//按页得到新上架的图书集合
 
     List<OrderBookDto> getBatchBookList(Long[] ids);//根据ids数组，得到对应的图书集合
@@ -59,7 +59,7 @@ public interface BookMapper {
 
 
     //添加图书到分类
-    int addBookToSort(Long bookSortId ,Long bookId);
+    int addBookToSort(Long id,Long bookSortId ,Long bookId);
     int delBookFromSort(Long booSortId,Long bookId);
     int modifyBookSort(Long bookSortId,Long bookId);
     BookSort getBookSort(Long bookId);//得到某本书的分类名

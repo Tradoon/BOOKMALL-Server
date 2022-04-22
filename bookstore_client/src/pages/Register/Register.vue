@@ -19,7 +19,7 @@
               <el-button type="primary" @click="submitForm('ruleForm')" style="width: 100%">注册</el-button>
             </el-form-item>
             <el-form-item>
-              <center><span>已阅读并同意：浮游书店 用户协议</span></center>
+              <center><span>已阅读并同意：BookMall书店 用户协议</span></center>
             </el-form-item>
           </el-form>
         </div>

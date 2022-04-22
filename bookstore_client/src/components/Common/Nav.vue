@@ -30,10 +30,10 @@
 <!--              <el-menu-item index="2-4-3">选项3</el-menu-item>-->
 <!--            </el-submenu>-->
 <!--          </el-submenu>-->
-          <el-menu-item index="/user/userInfo">消息</el-menu-item>
+<!--          <el-menu-item index="/user/userInfo">消息</el-menu-item>-->
           <el-menu-item index="/user/userOrder">我的订单</el-menu-item>
           <el-menu-item index="/user/userCenter">个人中心</el-menu-item>
-          <el-menu-item index="/user/applyService">服务</el-menu-item>
+<!--          <el-menu-item index="/user/applyService">服务</el-menu-item>-->
         </el-menu>
       </div>
     </div>

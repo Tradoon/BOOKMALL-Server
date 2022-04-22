@@ -112,7 +112,7 @@ spring:
         #spring.redis.pool.min-idle=0
         min-idle: 0
     ## 连接超时时间（毫秒）
-    timeout: 1200
+    timeout: 5000
 
   # 配置SpringMVC文件上传限制，默认1M。注意MB要大写，不然报错。SpringBoot版本不同，配置项不同
   servlet:

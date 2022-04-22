@@ -46,6 +46,10 @@ public class BookController {
      */
     @PostMapping("/addBook")
     public Map<String,Object> addBook(@RequestBody Book book){
+        Long dbBookId = bookService.getBookId(book.getIsbn());
+        if(!Objects.isNull(dbBookId)){
+          return ResultUtil.resultCode(200,"上传图书重复");
+        }
         bookService.addBook(book);
         Long bookId = bookService.getBookId(book.getIsbn());
         System.out.println("bookId:"+bookId);
@@ -56,12 +60,10 @@ public class BookController {
         r.setAddTime(timestamp);
         r.setBookId(bookId);
         if(newProduct){
-            r.setBookId(snowflakeConfig.snowFlackId());
             bookService.addToNewProduct(r);
         }
         boolean recommend = book.isRecommend();
         if(recommend){
-            r.setBookId(snowflakeConfig.snowFlackId());
             bookService.addToRecommend(r);
         }
         Long bookSort[] = book.getBookSort();
@@ -219,6 +221,9 @@ public class BookController {
     @GetMapping(value = "/getSortBookList")
     public Map<String, Object> getSortBookList(@RequestParam(value = "sortId")Long sortId){
         BookSort bookSort = sortService.getBookSortById(sortId);
+        if(Objects.isNull(bookSort)){
+            return ResultUtil.resultCode(50001,"查不到该分类");
+        }
         List<Book> upperBookList = bookService.getBooksByFirst(bookSort.getSortName(),1,14);
         if(upperBookList.isEmpty()){
             return ResultUtil.resultCode(50001,"查询到的数据为空");
@@ -330,8 +335,11 @@ public class BookController {
         book.setImgSrc(img);
         System.out.println("=======图书的封面：========="+book.getImgSrc()+"=========");
         BookSort bookSort = bookService.getBookSort(id);
-        int upperId=0;
+       Long upperId=0L;
         Long childId=0L;
+        if(Objects.isNull(bookSort)){
+            return ResultUtil.resultCode(5002,"分类不存在");
+        }
         if(!bookSort.getUpperName().equals("无")){
             upperId = sortService.getBookSortId("无",bookSort.getUpperName());
             map.put("upperId",upperId);
@@ -368,7 +376,7 @@ public class BookController {
     @GetMapping("/delBook")
     public Map<String,Object> delBook(@RequestParam(value = "bookId")Long bookId){
         System.out.println("删除图书起作用");
-        System.out.println("isbn:"+bookId);
+        System.out.println("bookId:"+bookId);
         Book book = bookService.getBook(bookId);
         List<String> imgPaths = bookService.getBookImgSrcList(book.getIsbn());
         for(int i=0;i<imgPaths.size();i++){

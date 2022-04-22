@@ -19,46 +19,46 @@
 
     <div class="box_info">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="账号安全" name="first">
-          <div class="tab_box">
-            <div class="secure_box">
-              <div class="secure_logo">
-                <i class="el-icon-lock"></i>
-              </div>
-              <div class="secure_title">
-                <h3>账号密码</h3>
-                <p class="text_msg">用于保护帐号信息和登录安全</p>
-              </div>
-              <div class="secure_action">
-                <el-button plain>修改</el-button>
-              </div>
-            </div>
-            <div class="secure_box">
-              <div class="secure_logo">
-                <i class="el-icon-message"></i>
-              </div>
-              <div class="secure_title">
-                <h3>安全邮箱</h3>
-                <p class="text_msg">安全邮箱将可用于登录小米帐号和重置密码</p>
-              </div>
-              <div class="secure_action">
-                <el-button plain>修改</el-button>
-              </div>
-            </div>
-            <div class="secure_box">
-              <div class="secure_logo">
-                <i class="el-icon-phone-outline"></i>
-              </div>
-              <div class="secure_title">
-                <h3>安全手机</h3>
-                <p class="text_msg">安全手机可以用于登录小米帐号，重置密码或其他安全验证</p>
-              </div>
-              <div class="secure_action">
-                <el-button plain>修改</el-button>
-              </div>
-            </div>
-          </div>
-        </el-tab-pane>
+<!--        <el-tab-pane label="账号安全" name="first">-->
+<!--          <div class="tab_box">-->
+<!--            <div class="secure_box">-->
+<!--              <div class="secure_logo">-->
+<!--                <i class="el-icon-lock"></i>-->
+<!--              </div>-->
+<!--              <div class="secure_title">-->
+<!--                <h3>账号密码</h3>-->
+<!--                <p class="text_msg">用于保护帐号信息和登录安全</p>-->
+<!--              </div>-->
+<!--              <div class="secure_action">-->
+<!--                <el-button plain>修改</el-button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="secure_box">-->
+<!--              <div class="secure_logo">-->
+<!--                <i class="el-icon-message"></i>-->
+<!--              </div>-->
+<!--              <div class="secure_title">-->
+<!--                <h3>安全邮箱</h3>-->
+<!--                <p class="text_msg">安全邮箱将可用于登录帐号和重置密码</p>-->
+<!--              </div>-->
+<!--              <div class="secure_action">-->
+<!--                <el-button plain>修改</el-button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="secure_box">-->
+<!--              <div class="secure_logo">-->
+<!--                <i class="el-icon-phone-outline"></i>-->
+<!--              </div>-->
+<!--              <div class="secure_title">-->
+<!--                <h3>安全手机</h3>-->
+<!--                <p class="text_msg">安全手机可以用于登录帐号，重置密码或其他安全验证</p>-->
+<!--              </div>-->
+<!--              <div class="secure_action">-->
+<!--                <el-button plain>修改</el-button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </el-tab-pane>-->
         <el-tab-pane label="个人信息" name="second">
           <div class="tab_box">
             <div class="modify_box">

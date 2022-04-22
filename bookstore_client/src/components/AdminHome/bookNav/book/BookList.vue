@@ -123,18 +123,18 @@
             售价：{{ scope.row.price }}元
           </template>
         </el-table-column>
-        <el-table-column
-          label="标签"
-          width="120" align="center">
-          <template slot-scope="scope">
-            <span style="margin-right: 10px">上架</span>
-            <el-switch v-model="scope.row.put" @change="handlePut($event,scope.row,scope.$index)"></el-switch>
-            <span style="margin-right: 10px">新品</span>
-            <el-switch v-model="scope.row.newProduct" @change="handleNew($event,scope.row,scope.$index)"></el-switch>
-            <span style="margin-right: 10px" >推荐</span>
-            <el-switch v-model="scope.row.recommend" @change="handleRec($event,scope.row,scope.$index)"></el-switch>
-          </template>
-        </el-table-column>
+<!--        <el-table-column-->
+<!--          label="标签"-->
+<!--          width="120" align="center">-->
+<!--          <template slot-scope="scope">-->
+<!--            <span style="margin-right: 10px">上架</span>-->
+<!--            <el-switch v-model="scope.row.put" @change="handlePut($event,scope.row,scope.$index)"></el-switch>-->
+<!--            <span style="margin-right: 10px">新品</span>-->
+<!--            <el-switch v-model="scope.row.newProduct" @change="handleNew($event,scope.row,scope.$index)"></el-switch>-->
+<!--            <span style="margin-right: 10px" >推荐</span>-->
+<!--            <el-switch v-model="scope.row.recommend" @change="handleRec($event,scope.row,scope.$index)"></el-switch>-->
+<!--          </template>-->
+<!--        </el-table-column>-->
         <el-table-column
           prop="rank"
           label="排序"

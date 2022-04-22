@@ -26,18 +26,18 @@
                   <a href="#/user/mesNotice"><li>消息通知</li></a>
                   <a href="#/cart" target="_blank"><li>购物车</li></a>
                   <a href="#/user/address"><li>收货地址</li></a>
-                  <a href="#/user/coupon"><li>优惠券</li></a>
+<!--                  <a href="#/user/coupon"><li>优惠券</li></a>-->
                 </ul>
               </div>
             </div>
             <div class="uc-nav-box">
-              <div class="box-hd">售后服务</div>
-              <div class="box-bd">
-                <ul class="uc-nav-list">
-                  <a href="#/user/record"><li>服务记录</li></a>
-                  <a href="#/user/applyService"><li>申请服务</li></a>
-                </ul>
-              </div>
+<!--              <div class="box-hd">售后服务</div>-->
+<!--              <div class="box-bd">-->
+<!--                <ul class="uc-nav-list">-->
+<!--                  <a href="#/user/record"><li>服务记录</li></a>-->
+<!--                  <a href="#/user/applyService"><li>申请服务</li></a>-->
+<!--                </ul>-->
+<!--              </div>-->
             </div>
             <div class="uc-nav-box">
               <div class="box-hd">账户管理</div>

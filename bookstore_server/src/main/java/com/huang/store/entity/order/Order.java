@@ -31,7 +31,7 @@ public class Order {
     private String orderStatus;//订单状态
     private int logisticsCompany;//物流公司 用id号进行辨识是哪个物流公司,这样物流公司也可以进行管理
     private String logisticsNum;//物流单号
-    private boolean beUserDelete;//订单是否被用户删除的标记
+    private String beUserDelete;//订单是否被用户删除的标记
 
 
     @Override

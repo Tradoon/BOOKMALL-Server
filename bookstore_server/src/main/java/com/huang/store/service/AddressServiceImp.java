@@ -15,6 +15,7 @@ public class AddressServiceImp implements AddressService {
 
     @Override
     public int addAddress(Address address) {
+        address.setOff(String.valueOf(false));
         int result = addressMapper.addAddress(address);
         return result;
     }

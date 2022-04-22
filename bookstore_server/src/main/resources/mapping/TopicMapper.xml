@@ -24,11 +24,11 @@
     <update id="modifyBookTopic" parameterType="com.huang.store.entity.book.BookTopic">
         update booktopic
             <set>
-                <if test="topicName != null">topicName=#{topicName},</if>
-                <if test="subTitle != null">subTitle=#{subTitle},</if>
-                <if test="cover != null">cover=#{cover},</if>
-                <if test="rank != null">rank=#{rank},</if>
-                <if test="put != null">put=#{put}</if>
+                <if test="topicName != null">`topicName`=#{topicName},</if>
+                <if test="subTitle != null">`subTitle`=#{subTitle},</if>
+                <if test="cover != null">`cover`=#{cover},</if>
+                <if test="rank != null">`rank`=#{rank},</if>
+                <if test="put != null">`put`=#{put}</if>
             </set>
         where id=#{id}
     </update>
@@ -129,8 +129,8 @@
 
     <!--得到所有添加到指定书单的所有图书-->
     <select id="getTopicBookList" resultType="com.huang.store.entity.dto.TopicBook">
-        select id,bookName,isbn,author,publish,birthday,recommendReason from book
-            join subbooktopic on book.id=subbooktopic.bookId where topicId = #{topicId}
+        select book.id,bookName,isbn,author,publish,birthday,recommendReason from book
+            join subbooktopic on book.id=subbooktopic.bookId where subbooktopic.topicId = #{topicId}
     </select>
 
 

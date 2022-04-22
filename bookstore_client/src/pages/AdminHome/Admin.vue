@@ -37,7 +37,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="/admin/orderList">订单列表</el-menu-item>
-              <el-menu-item index="/admin/orderSet">订单设置</el-menu-item>
+<!--              <el-menu-item index="/admin/orderSet">订单设置</el-menu-item>-->
               <el-menu-item index="/admin/returnOrder">退货申请处理</el-menu-item>
               <el-menu-item index="/admin/returnReason">退货原因设置</el-menu-item>
             </el-menu-item-group>
@@ -48,9 +48,9 @@
               <span slot="title">营销</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/admin/spikeSet">秒杀活动</el-menu-item>
+<!--              <el-menu-item index="/admin/spikeSet">秒杀活动</el-menu-item>-->
               <el-menu-item index="/admin/bookRecommend">人气推荐</el-menu-item>
-              <el-menu-item index="/admin/coupon">优惠券</el-menu-item>
+<!--              <el-menu-item index="/admin/coupon">优惠券</el-menu-item>-->
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="5">

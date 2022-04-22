@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDetail {
+    private Long id;
     private String orderId;//订单号
     private Long bookId; //图书id
     private int num;//某本图书的下单数量

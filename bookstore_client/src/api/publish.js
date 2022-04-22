@@ -11,6 +11,7 @@ export const reqAddPublish = (publish) => ajax(BASE_URL+'/admin/addPublish', {
   rank: publish.rank,
 }, 'POST')
 
+
 export const reqGetPublishList = (page,pageSize)=>ajax(BASE_URL+'/getPublishList',{page, pageSize})
 
 export const reqGetPublishNames = ()=>ajax(BASE_URL+'/getPublishNames')

@@ -3,8 +3,8 @@
 <mapper namespace="com.huang.store.mapper.OrderMapper">
 
     <insert id="addOrder" parameterType="com.huang.store.entity.order.Order">
-        insert into bookorder(orderId,account,addressId,orderTime,shipTime,getTime,evaluateTime,closeTime,orderStatus,logisticsNum,confirmTime)
-            values (#{orderId},#{account},#{addressId},#{orderTime},#{shipTime},#{getTime},#{evaluateTime},#{closeTime},#{orderStatus},#{logisticsNum},#{confirmTime})
+        insert into bookorder(orderId,account,addressId,orderTime,shipTime,getTime,evaluateTime,closeTime,orderStatus,logisticsNum,confirmTime,beUserDelete)
+            values (#{orderId},#{account},#{addressId},#{orderTime},#{shipTime},#{getTime},#{evaluateTime},#{closeTime},#{orderStatus},#{logisticsNum},#{confirmTime},#{beUserDelete})
     </insert>
 
     <insert id="batchAddOrderDetail" parameterType="com.huang.store.entity.order.OrderDetail">

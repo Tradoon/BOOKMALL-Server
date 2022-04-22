@@ -3,7 +3,7 @@
     <div class="content">
       <div style="float: left">
         <div style="width: 232px; height: 40px;vertical-align: middle;font-family: 宋体;font-size: 38px;font-style: italic">
-          浮游书店
+          BookMall
         </div>
 <!--        <el-image-->
 <!--          style="width: 232px; height: 40px;vertical-align: middle;"-->

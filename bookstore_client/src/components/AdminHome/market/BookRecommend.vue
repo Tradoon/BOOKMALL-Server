@@ -72,10 +72,15 @@
           align="center">
         </el-table-column>
         <el-table-column
-          label="是否推荐"
-          align="center">
+          label="营销策略"
+          width="120" align="center">
           <template slot-scope="scope">
+            <span style="margin-right: 10px">上架</span>
             <el-switch v-model="scope.row.put" @change="handlePut($event,scope.row,scope.$index)"></el-switch>
+            <span style="margin-right: 10px">新品</span>
+            <el-switch v-model="scope.row.newProduct" @change="handleNew($event,scope.row,scope.$index)"></el-switch>
+            <span style="margin-right: 10px" >推荐</span>
+            <el-switch v-model="scope.row.recommend" @change="handleRec($event,scope.row,scope.$index)"></el-switch>
           </template>
         </el-table-column>
         <el-table-column
@@ -85,7 +90,7 @@
         </el-table-column>
         <el-table-column
           prop="author"
-          label="状态"
+          label="作者"
           align="center">
         </el-table-column>
         <el-table-column

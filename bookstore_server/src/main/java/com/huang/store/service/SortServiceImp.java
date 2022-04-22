@@ -56,7 +56,7 @@ public class SortServiceImp implements SortService {
     }
 
     @Override
-    public int getBookSortId(String upperName, String sortName) {
+    public Long getBookSortId(String upperName, String sortName) {
         return sortMapper.getBookSortId(upperName, sortName);
     }
 

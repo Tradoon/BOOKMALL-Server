@@ -35,7 +35,7 @@
             <el-submenu index="4">
               <template slot="title"><i class="el-icon-setting"></i>营销</template>
               <el-menu-item-group>
-                <el-menu-item index="4-1">秒杀活动</el-menu-item>
+<!--                <el-menu-item index="4-1">秒杀活动</el-menu-item>-->
                 <el-menu-item index="4-2">书单专题</el-menu-item>
                 <el-menu-item index="4-3">人气推荐</el-menu-item>
                 <el-menu-item index="4-4">优惠卷</el-menu-item>

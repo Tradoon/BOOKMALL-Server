@@ -46,7 +46,7 @@
         select * from booksort where upperName=#{upperName} and sortName=#{sortName}
     </select>
 
-    <select id="getBookSortId" resultType="int">
+    <select id="getBookSortId" resultType="long">
         select id from booksort where upperName=#{upperName} and sortName=#{sortName}
     </select>
 

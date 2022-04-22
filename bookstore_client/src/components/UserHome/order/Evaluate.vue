@@ -106,10 +106,10 @@
                         },
                         address:{
                             id: 1,
-                            account: "黄小龙",
-                            name: "小胖",
-                            phone: "18988798892",
-                            addr: "江西抚州市临川区西大街街道东华理工大学长江学院本部(330006)",
+                            account: "123@123.com",
+                            name: "啊啊",
+                            phone: "008010010",
+                            addr: "贵州花果山",
                             label: "家",
                             off: false,
                         }

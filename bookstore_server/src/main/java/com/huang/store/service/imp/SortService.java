@@ -13,7 +13,7 @@ public interface SortService {
     int modifySort(BookSort bookSort);
     int modifySortUpperName(String oldUpperName,String newUpperName);
     BookSort getBookSort(String upperName,String sortName);
-    int getBookSortId(String upperName,String sortName);
+    Long getBookSortId(String upperName,String sortName);
     BookSort getBookSortById(Long id);
     List<BookSort> getFirstSorts(int page,int pageSize);
     List<BookSort> getSecondSorts(String upperName,int page,int pageSize);//按页得到二级分类

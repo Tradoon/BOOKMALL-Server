@@ -74,6 +74,7 @@
                 modifyUrl:'http://localhost:8082/uploadTopicImg',
                 auto: false,
 
+
                 fileList: [],
                 dialogImageUrl: '',
                 dialogVisible: false,//添加的图片是否可见

@@ -58,12 +58,12 @@
     <el-card class="box-card" shadow="never">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
-      <el-button
-        class="btn-add"
-        style="float: right"
-        size="mini">
-        添加
-      </el-button>
+<!--      <el-button-->
+<!--        class="btn-add"-->
+<!--        style="float: right"-->
+<!--        size="mini">-->
+<!--        添加-->
+<!--      </el-button>-->
     </el-card>
 
     <div class="table_content">
@@ -87,29 +87,31 @@
           <template slot-scope="scope">{{ scope.row.id }}</template>
         </el-table-column>
         <el-table-column
-          prop="bookName"
+          prop="null"
           label="申请时间"
           align="center">
+          2022-04-05
         </el-table-column>
         <el-table-column
-          prop="isbn"
+
           label="用户账号"
           align="center">
+          00@00.com
         </el-table-column>
         <el-table-column
-          prop="author"
+          prop="price"
           label="退款金额"
           align="center">
         </el-table-column>
         <el-table-column
-          prop="rank"
           label="申请状态"
           align="center">
+          完成退款
         </el-table-column>
         <el-table-column
-          prop="rank"
           label="处理时间"
           align="center">
+          2022-04-20
         </el-table-column>
         <el-table-column
           label="操作"

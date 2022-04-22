@@ -19,7 +19,8 @@
         :data="tableData"
         tooltip-effect="dark"
         style="width: 100%"
-        @selection-change="handleSelectionChange">
+        @selection-change="handleSelectionChange"
+      >
         <el-table-column
           type="selection"
           width="55"
@@ -27,13 +28,15 @@
         >
         </el-table-column>
         <el-table-column
+          prop="code"
           label="编号"
           width="70"
           align="center">
-          <template slot-scope="scope">{{ scope.row.id }}</template>
+
         </el-table-column>
+
         <el-table-column
-          prop="bookName"
+          prop="type"
           label="原因类型"
           align="center">
         </el-table-column>
@@ -43,7 +46,7 @@
           align="center">
         </el-table-column>
         <el-table-column
-          prop="birthday"
+          prop="addTime"
           label="添加时间"
           align="center">
         </el-table-column>
@@ -112,81 +115,105 @@
 </template>
 
 <script>
-    import {reqGetPublishNames} from "../../../api/publish";
-    import {reqGetSortList} from "../../../api/sort";
-    import {reqGetBookList,reqDelBook,reqModifyPut,reqModifyRec,reqModifyNew} from "../../../api/book";
-    import axios from 'axios';
+    // import {reqGetPublishNames} from "../../../api/publish";
+    // import {reqGetSortList} from "../../../api/sort";
+    // import {reqGetBookList,reqDelBook,reqModifyPut,reqModifyRec,reqModifyNew} from "../../../api/book";
+    // import axios from 'axios';
     export default {
         name: "ReturnOrder",
         data(){
             return{
-                loading: true,
-                currentPage: 1,
-                page_size: 5,
-                tableData: [],
-                total:null,
-                book: {
-                    id: null,
-                    bookName: '',
-                    author: '',
-                    isbn: '',
-                    publish: '',
-                    birthday: '',
-                    marketPrice: '',
-                    price: '',
-                    stock: '',
-                    description: '',
-                    ImgSrc: [],
-                    put: true,
-                    coverImg: '',
-                    rank: '',
-                    newProduct: true,
-                    recommend: true,
-                    bookSort: [],//图书分类的绑定值
-                },
-                search: {
-                    bookName: '',
-                    author: '',
-                    isbn: '',
-                    publish: '',
-                    put: '',
-                    bookSort: '',
-                },
-                publishList: [],//出版社下拉选择器
-                options: [],//图书分类的联机选择器
-                operator: null,
-                //批量操作
-                operates: [
-                    {
-                        label: "批量删除",
-                        value: "del"
-                    },
-                    {
-                        label: "批量上架",
-                        value: "put"
-                    },
-                    {
-                        label: "批量下架",
-                        value: "putOff"
-                    },
-                    {
-                        label: "设为推荐",
-                        value: "recommend"
-                    },
-                    {
-                        label: "取消推荐",
-                        value: "recommendOff"
-                    },
-                    {
-                        label: "设为新品",
-                        value: "newProduct"
-                    },
-                    {
-                        label: "取消新品",
-                        value: "newProductOff"
-                    }
-                ],
-                multipleSelection: []
+                // loading: true,
+                // currentPage: 1,
+                // page_size: 5,
+                tableData: [
+                  {
+                    code:'7823782367090167',
+                    type:'书籍损毁严重',
+                    rank:'1',
+                    addTime:'2022-04-15',
+                  },{
+                    code:'7823780909090167',
+                    type:'盗版书',
+                    rank:'1',
+                    addTime:'2022-04-15',
+                  },{
+                    code:'7823780908990167',
+                    type:'不想要',
+                    rank:'1',
+                    addTime:'2022-04-15',
+                  },{
+                    code:'782378888909090167',
+                    type:'暴力快递',
+                    rank:'1',
+                    addTime:'2022-04-15',
+                  }
+                ]
+              // ,
+                // total:null,
+                // book: {
+                //     id: null,
+                //     bookName: '',
+                //     author: '',
+                //     isbn: '',
+                //     publish: '',
+                //     birthday: '',
+                //     marketPrice: '',
+                //     price: '',
+                //     stock: '',
+                //     description: '',
+                //     ImgSrc: [],
+                //     put: true,
+                //     coverImg: '',
+                //     rank: '',
+                //     newProduct: true,
+                //     recommend: true,
+                //     bookSort: [],//图书分类的绑定值
+                // },
+                // search: {
+                //     bookName: '',
+                //     author: '',
+                //     isbn: '',
+                //     publish: '',
+                //     put: '',
+                //     bookSort: '',
+                // }
+                // ,
+                // publishList: [],//出版社下拉选择器
+                // options: [],//图书分类的联机选择器
+                // operator: null,
+                // //批量操作
+                // operates: [
+                //     {
+                //         label: "批量删除",
+                //         value: "del"
+                //     },
+                //     {
+                //         label: "批量上架",
+                //         value: "put"
+                //     },
+                //     {
+                //         label: "批量下架",
+                //         value: "putOff"
+                //     },
+                //     {
+                //         label: "设为推荐",
+                //         value: "recommend"
+                //     },
+                //     {
+                //         label: "取消推荐",
+                //         value: "recommendOff"
+                //     },
+                //     {
+                //         label: "设为新品",
+                //         value: "newProduct"
+                //     },
+                //     {
+                //         label: "取消新品",
+                //         value: "newProductOff"
+                //     }
+                // ],
+                // multipleSelection: []
             }
         },
         created:function () {

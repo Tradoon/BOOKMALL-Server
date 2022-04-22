@@ -103,8 +103,8 @@
                   <SpikeBox></SpikeBox>
                 </div>
             </el-tab-pane>
-            <el-tab-pane label="新书区" name="second">新书区</el-tab-pane>
-            <el-tab-pane label="书单区" name="third">书单区</el-tab-pane>
+<!--            <el-tab-pane label="新书区" name="second">新书区</el-tab-pane>-->
+<!--            <el-tab-pane label="书单区" name="third">书单区</el-tab-pane>-->
           </el-tabs>
         </div>
       </div>

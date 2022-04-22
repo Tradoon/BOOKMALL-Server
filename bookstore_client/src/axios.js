@@ -15,6 +15,7 @@ axios.interceptors.request.use(config => {
 
     const token = localStorage.getItem("token");
     // console.log("发送前的token:"+token);
+    console.log("测试addTopic的 token",config.headers);
     config.headers.Authorization = token;
 
     // console.log("config.headers.Authorization:"+config.headers.Authorization);

@@ -25,14 +25,20 @@
             <el-input v-model="search.isbn"></el-input>
           </el-form-item>
           <el-form-item label="订单状态">
-            <el-select v-model="book.publish" placeholder="请选择出版社" prop="publish">
-              <el-option
-                v-for="item in publishList"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
+            <el-select v-model="book.publish" placeholder="订单状态" prop="publish">
+<!--              <el-option-->
+<!--                v-for="item in publishList"-->
+<!--                :key="item"-->
+<!--                :label="item"-->
+<!--                :value="item"-->
+<!--              >-->
+<!--              </el-option>-->
+                  <el-option value="status0" label="已付款"></el-option>
+                  <el-option value="status1" label="已发货"></el-option>
+                  <el-option value="status2" label="已收货"></el-option>
+                  <el-option value="status3" label="已评价"></el-option>
+                  <el-option value="status4" label="已关闭"></el-option>
+                  <el-option value="status5" label="被删除"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -117,11 +123,11 @@
                 @click="goToDeliver(scope.$index,scope.row)"
               >订单发货
               </el-button>
-              <el-button
-                size="mini"
-                @click="handleDelete(scope.$index, scope.row)"
-              >订单跟踪
-              </el-button>
+<!--              <el-button-->
+<!--                size="mini"-->
+<!--                @click="handleDelete(scope.$index, scope.row)"-->
+<!--              >订单跟踪-->
+<!--              </el-button>-->
             </p>
           </template>
         </el-table-column>

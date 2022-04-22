@@ -113,7 +113,7 @@
         <el-row>
           <el-col :span="4" class="table-cell-title">商品总价</el-col>
           <el-col :span="4" class="table-cell-title">运费</el-col>
-          <el-col :span="4" class="table-cell-title">优惠券</el-col>
+<!--          <el-col :span="4" class="table-cell-title">优惠券</el-col>-->
           <el-col :span="4" class="table-cell-title">活动优惠</el-col>
           <el-col :span="4" class="table-cell-title">订单总金额</el-col>
           <el-col :span="4" class="table-cell-title">实付金额</el-col>
@@ -185,10 +185,10 @@
                     },
                     address:{
                         id: 1,
-                        account: "黄小龙",
+                        account: "123@123.com",
                         name: "小胖",
-                        phone: "18988798892",
-                        addr: "江西抚州市临川区西大街街道东华理工大学长江学院本部(330006)",
+                        phone: "15229002013",
+                        addr: "随便哪个地方",
                         label: "家",
                         off: false,
                     }

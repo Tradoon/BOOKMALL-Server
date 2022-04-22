@@ -1,7 +1,7 @@
 <template>
   <div class="gallery-book">
     <div class="gallery-book_title">
-      <span>今日秒杀</span><a href="#/spike">/进入秒杀会场</a>
+<!--      <span>今日秒杀</span><a href="#/spike">/进入秒杀会场</a>-->
     </div>
     <div class="gallery-book_list">
       <div class="gallery-book_card" v-for="item in books" :key="item.id">
@@ -41,25 +41,25 @@
                     {
                         id: 1,
                         name: "灰阑中的叙述（增订本）灰阑中的叙述（增订本）灰阑中的叙述（增订本）",
-                        author: "黄子平 著",
+                        author: "xxx 著",
                         price: 123.23
                     },
                     {
                         id: 12,
                         name: "灰阑中的叙述（增订本）灰阑中的叙述（增订本）灰阑中的叙述（增订本）",
-                        author: "黄子平 著",
+                        author: "xxx 著",
                         price: 123.23
                     },
                     {
                         id: 13,
                         name: "灰阑中的叙述（增订本）灰阑中的叙述（增订本）灰阑中的叙述（增订本）",
-                        author: "黄子平 著",
+                        author: "xxx 著",
                         price: 123.23
                     },
                     {
                         id: 14,
                         name: "灰阑中的叙述（增订本）灰阑中的叙述（增订本）灰阑中的叙述（增订本）",
-                        author: "黄子平 著",
+                        author: "xxx 著",
                         price: 123.23
                     }
                 ]
